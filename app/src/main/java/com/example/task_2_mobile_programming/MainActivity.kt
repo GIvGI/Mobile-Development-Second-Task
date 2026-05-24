@@ -66,7 +66,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun StudentFormScreen(){
     var nameState by remember { mutableStateOf("") }
-    var surnameState by remember {mutableStateOf("")}
 
     var emailState by remember {mutableStateOf("")}
     var dateState by remember { mutableStateOf("") }
@@ -136,17 +135,7 @@ fun StudentFormScreen(){
         OutlinedTextField(
             value = nameState,
             onValueChange = { nameState = it },
-            label = { Text("სახელი") },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp),
-            colors = textFieldColors,
-            singleLine = true
-        )
-
-        OutlinedTextField(
-            value = surnameState,
-            onValueChange = { surnameState = it },
-            label = { Text("გვარი") },
+            label = { Text("სახელი და გვარი") },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             colors = textFieldColors,
@@ -246,7 +235,6 @@ fun StudentFormScreen(){
             Button(
                 onClick = {
                     val isAllTextFieldsFilled = nameState.isNotBlank() &&
-                            surnameState.isNotBlank() &&
                             emailState.isNotBlank() &&
                             emailState.contains("@") && //იმეილი @-ის გარეშე არ არსებობს ამიტომ დავამატე ამის ვალიდაცია
                             dateState.isNotBlank()
